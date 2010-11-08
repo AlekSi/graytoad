@@ -16,11 +16,11 @@ class Graytoad
       g.host = this_host
 
       if e.nil?
-        g.short_message, g.full_message = "#{opts[:error_class]}: #{opts[:error_message]}", caller
+        g.short_message, g.full_message = "#{opts[:error_class]}: #{opts[:error_message]}", backtrace_to_message(caller)
         opts.each_pair { |key, value| g.add_additional(key.to_s, value) }
         HoptoadNotifier.notify(opts)
       else
-        g.short_message, g.full_message = e.message, e.backtrace
+        g.short_message, g.full_message = e.message, "Backtrace:\n" + backtrace_to_message(e.backtrace)
         HoptoadNotifier.notify(e, opts)
       end
 
@@ -28,6 +28,14 @@ class Graytoad
     end
 
   private
+    def backtrace_to_message(bt)
+      if bt.nil?
+        "No backtrace."
+      else
+        "Backtrace:\n" + bt.join("\n")
+      end
+    end
+
     def detect_this_host
       require 'socket'
       self.this_host = Socket.gethostname
