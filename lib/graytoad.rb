@@ -6,10 +6,10 @@ class Graytoad
     attr_accessor :gelf_host, :gelf_port
 
     def notify(*args)
-      HoptoadNotifier.notify(args)
+      HoptoadNotifier.notify(*args)
 
       @notifier ||= GELF::Notifier.new(@gelf_host, @gelf_port)
-      @notifier.notify(args)
+      @notifier.notify(*args)
     end
   end
 end
