@@ -17,7 +17,7 @@ class Graytoad
 
       if e.nil?
         g.short_message, g.full_message = "#{opts[:error_class]}: #{opts[:error_message]}", caller
-        opts.each_pair { |key, value| g.add_additional(key, value) }
+        opts.each_pair { |key, value| g.add_additional(key.to_s, value) }
         HoptoadNotifier.notify(opts)
       else
         g.short_message, g.full_message = e.message, e.backtrace
