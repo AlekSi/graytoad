@@ -10,7 +10,7 @@ begin
     gem.homepage = "http://github.com/AlekSi/graytoad"
     gem.authors = ["Alexey Palazhchenko"]
     gem.add_dependency "hoptoad_notifier", "~> 2.3.0"
-    gem.add_dependency "gelf", "~> 0.9.2"
+    gem.add_dependency "aleksi-gelf", "~> 0.9.778"
     gem.add_development_dependency "shoulda", "~> 2.11.0"
     gem.add_development_dependency "mocha", "~> 0.9.9"
   end
