@@ -3,13 +3,11 @@ require "hoptoad_notifier"
 
 class Graytoad
   class << self
-    attr_accessor :gelf_host, :gelf_port
+    attr_accessor :gelf_notifier
 
     def notify(*args)
       HoptoadNotifier.notify(*args)
-
-      @notifier ||= GELF::Notifier.new(@gelf_host, @gelf_port)
-      @notifier.notify(*args)
+      @gelf_notifier.notify(*args)
     end
   end
 end
