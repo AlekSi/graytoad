@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/AlekSi/graytoad"
     gem.authors = ["Alexey Palazhchenko"]
     gem.add_dependency "hoptoad_notifier", "~> 2.3.0"
-    gem.add_dependency "gelf", "1.1.0.beta1"
+    gem.add_dependency "gelf", "1.1.0.beta2"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
